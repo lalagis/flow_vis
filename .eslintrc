@@ -17,6 +17,7 @@
       "singleQuote": true,
       "semi": false,
       "tabWidth": 2
-    }]
+    }],
+    "import/no-unresolved": "off"
   }
 }
