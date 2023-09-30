@@ -1,7 +1,7 @@
 {
-  "name": "",
+  "name": "flow_vis",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -10,6 +10,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^3.2.0"
+    "astro": "^3.2.0",
+    "million": "^2.6.2"
   }
 }
