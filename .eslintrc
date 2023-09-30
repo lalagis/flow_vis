@@ -1,0 +1,22 @@
+{
+  "extends": ["plugin:prettier/recommended", "plugin:import/recommended", "@unocss"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": [
+    "@typescript-eslint", 
+    "react", 
+    "unused-imports",
+    "simple-import-sort"
+  ],
+  "rules": {
+    "prettier/prettier": ["error", {
+      "endOfLine": "auto",
+      "printWidth": 120,
+      "singleQuote": true,
+      "semi": false,
+      "tabWidth": 2
+    }]
+  }
+}
