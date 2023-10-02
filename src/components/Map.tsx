@@ -26,6 +26,10 @@ const MAPBOX_ACCESS_TOKEN = import.meta.env.PUBLIC_MAPBOX_ACCESS_TOKEN
 const MAPBOX_STYLE_LIGHT = import.meta.env.PUBLIC_MAPBOX_STYLE_LIGHT
 const MAPBOX_STYLE_DARK = import.meta.env.PUBLIC_MAPBOX_STYLE_DARK
 
+console.log(MAPBOX_ACCESS_TOKEN, 'token')
+console.log(MAPBOX_STYLE_LIGHT, 'light')
+console.log(MAPBOX_STYLE_DARK, 'dark')
+
 export default function Map() {
   const [viewState, setViewState] = useState<ViewState>()
   const [data, setData] = useState<FlowmapData<LocationDatum, FlowDatum>>({
@@ -90,7 +94,7 @@ export default function Map() {
       setViewState({
         ...viewState,
         latitude: viewState.latitude - 0.02,
-        zoom: viewState.zoom + 1,
+        zoom: viewState.zoom,
         // @ts-expect-error
         width,
         height,
