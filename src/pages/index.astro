@@ -1,9 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro'
+import Map from '../components/Map'
 ---
 
 <Layout title="导流地图">
 	<main>
-
+		<Map client:only="react" />
 	</main>
 </Layout>

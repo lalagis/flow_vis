@@ -18,6 +18,8 @@
       "semi": false,
       "tabWidth": 2
     }],
-    "import/no-unresolved": "off"
+    "import/no-unresolved": "off",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error"
   }
 }
