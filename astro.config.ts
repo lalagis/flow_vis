@@ -1,7 +1,7 @@
+import react from '@astrojs/react'
 import { defineConfig } from 'astro/config'
 import million from 'million/compiler'
 import UnoCSS from 'unocss/astro'
-import react from '@astrojs/react'
 
 // https://astro.build/config
 export default defineConfig({
