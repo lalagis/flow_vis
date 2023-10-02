@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 import { Map as MapGL, type ViewState } from 'react-map-gl'
 import { useSnapshot } from 'valtio'
 
-import { configStore } from '../stores/config'
+import { configStore, envStore } from '../stores/config'
 
 interface LocationDatum {
   id: string
@@ -21,14 +21,6 @@ interface FlowDatum {
   dest: string
   count: number
 }
-
-const MAPBOX_ACCESS_TOKEN = import.meta.env.PUBLIC_MAPBOX_ACCESS_TOKEN
-const MAPBOX_STYLE_LIGHT = import.meta.env.PUBLIC_MAPBOX_STYLE_LIGHT
-const MAPBOX_STYLE_DARK = import.meta.env.PUBLIC_MAPBOX_STYLE_DARK
-
-console.log(MAPBOX_ACCESS_TOKEN, 'token')
-console.log(MAPBOX_STYLE_LIGHT, 'light')
-console.log(MAPBOX_STYLE_DARK, 'dark')
 
 export default function Map() {
   const [viewState, setViewState] = useState<ViewState>()
@@ -104,6 +96,7 @@ export default function Map() {
   const handleViewStateChange = ({ viewState }: any) => {
     setViewState(viewState)
   }
+  const env = useSnapshot(envStore)
   const config = useSnapshot(configStore)
   const layers = []
   if (data) {
@@ -157,8 +150,8 @@ export default function Map() {
         style={{ mixBlendMode: config.darkMode ? 'screen' : 'darken' }}
       >
         <MapGL
-          mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
-          mapStyle={config.darkMode ? MAPBOX_STYLE_DARK : MAPBOX_STYLE_LIGHT}
+          mapboxAccessToken={env.MAPBOX_ACCESS_TOKEN}
+          mapStyle={config.darkMode ? env.MAPBOX_STYLE_DARK : env.MAPBOX_STYLE_LIGHT}
         />
       </DeckGL>
     </div>

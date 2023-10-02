@@ -19,3 +19,9 @@ export const configStore = proxy({
   highlightColor: FlowmapLayer.defaultProps.highlightColor,
   maxTopFlowsDisplayNum: FlowmapLayer.defaultProps.maxTopFlowsDisplayNum,
 })
+
+export const envStore = proxy({
+  MAPBOX_ACCESS_TOKEN: 'pk.eyJ1IjoiY2lybm9xdnEiLCJhIjoiY2xha2YxOGU3MGxreDN1bWgzbjNvMmw5cCJ9.OOwcII66PaN5yekvw-UN6Q',
+  MAPBOX_STYLE_LIGHT: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
+  MAPBOX_STYLE_DARK: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
+})
