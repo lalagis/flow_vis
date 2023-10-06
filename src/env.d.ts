@@ -10,3 +10,16 @@ interface ImportMetaEnv {
 interface ImportMeta {
   readonly env: ImportMetaEnv
 }
+
+interface LocationDatum {
+  id: string
+  lat: number
+  lon: number
+  name: string
+}
+
+interface FlowDatum {
+  origin: string
+  dest: string
+  count: number
+}

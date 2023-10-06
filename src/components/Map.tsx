@@ -7,77 +7,19 @@ import { useEffect, useState } from 'react'
 import { Map as MapGL, type ViewState } from 'react-map-gl'
 import { useSnapshot } from 'valtio'
 
+import { useFetchData } from '../hooks/useFetchData'
 import { configStore, envStore } from '../stores/config'
-
-interface LocationDatum {
-  id: string
-  lat: number
-  lon: number
-  name: string
-}
-
-interface FlowDatum {
-  origin: string
-  dest: string
-  count: number
-}
 
 export default function Map() {
   const [viewState, setViewState] = useState<ViewState>()
-  const [data, setData] = useState<FlowmapData<LocationDatum, FlowDatum>>({
-    locations: [
-      {
-        id: '1',
-        name: 'New York',
-        lat: 40.713543,
-        lon: -74.011219,
-      },
-      {
-        id: '2',
-        name: 'London',
-        lat: 51.507425,
-        lon: -0.127738,
-      },
-      {
-        id: '3',
-        name: 'Rio de Janeiro',
-        lat: -22.906241,
-        lon: -43.180244,
-      },
-    ],
-    flows: [
-      {
-        origin: '1',
-        dest: '2',
-        count: 42,
-      },
-      {
-        origin: '2',
-        dest: '1',
-        count: 51,
-      },
-      {
-        origin: '3',
-        dest: '1',
-        count: 50,
-      },
-      {
-        origin: '2',
-        dest: '3',
-        count: 40,
-      },
-      {
-        origin: '1',
-        dest: '3',
-        count: 22,
-      },
-      {
-        origin: '3',
-        dest: '2',
-        count: 42,
-      },
-    ],
-  })
+  const [data, setData] = useState<FlowmapData<LocationDatum, FlowDatum>>()
+
+  const fetchData = useFetchData()
+  useEffect(() => {
+    ;(async () => {
+      setData(await fetchData())
+    })()
+  }, [])
 
   useEffect(() => {
     if (!viewState && data?.locations) {
